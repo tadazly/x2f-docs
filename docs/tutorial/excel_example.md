@@ -6,7 +6,7 @@ sidebar_position: 2
 
 仅简单展示，具体的请阅读 [**配表规范**](./excel_standards.md) 与 [**字段类型**](./field_types.md)。
 
-还提供了一个乱配的 [itemTable.xlsx](./assets/itemTable.xlsx) 仅供娱乐参考～
+还提供了一个乱配的 [itemTable.xlsx](https://github.com/tadazly/xlsx-fbs/blob/master/example/singleConvert/itemTable.xlsx) 仅供娱乐参考～
 
 下面是一个简单的示范，假设有一张 item.xlsx 表：
 
