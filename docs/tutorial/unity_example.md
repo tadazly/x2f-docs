@@ -71,7 +71,7 @@ CMD 不支持换行符，可以写个 bat 脚本，使用 ^ 换行。
     ```
 
 :::info
-上面互换了 tableClassSuffix 和 csharpUnityLoaderSuffix 的默认值，让接口代码更 **S计划**。
+上面互换了 tableClassSuffix 和 csharpUnityLoaderSuffix 的默认值，让接口代码更 **简洁**。
 :::
 
 ### 使用 YooAsset 打包二进制
@@ -143,9 +143,3 @@ async void Start()
 ### 自定义 Unity 模板代码
 
 - 参考修改 `template/unity` 下的 .cs 文件。
-
-### S计划用打表命令
-
-```
-x2f /table/excel/common -n Xls --binary-extension bytes --property-order abcxx --csharp --csharp-unity-loader --csharp-unity-loader-suffix "" --table-class-suffix Table --gen-onefile -o "/excel/output" --censored-output-bin "/UnityProject/Assets/HotUpdate/Configs/Xls" --censored-output-csharp "/UnityProject/Assets/HotUpdate/Scripts" --clean-output
-```
