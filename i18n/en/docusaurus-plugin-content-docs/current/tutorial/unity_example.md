@@ -75,7 +75,7 @@ CMD doesn’t support continuation—just write a .bat script and use ^.
 
 AssetBundle Collector Settings:
 
-<img src="./assets/YooAsset_example.png" width="800">
+<img src={require("./assets/YooAsset_example.png").default}  width="900" />
 
 - Enable `Enable Addressable`
 - Use `AddressByFileName` for addressable mode
