@@ -46,7 +46,7 @@ sidebar_position: 4
 
 
 :::tip
-下面是一些比较复杂的类型，枚举（enum）、结构体（struct）和 结构表（子表）（table），建议参考 [`itemTable.xlsx`](./assets/itemTable.xlsx) 中的用法作为比较。
+下面是一些比较复杂的类型，枚举（enum）、结构体（struct）和 结构表（子表）（table），建议参考 [`itemTable.xlsx`](https://github.com/tadazly/xlsx-fbs/blob/master/example/singleConvert/itemTable.xlsx) 中的用法作为比较。
 :::
 
 ### 枚举 Enums
