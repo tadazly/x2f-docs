@@ -2,94 +2,94 @@
 sidebar_position: 1
 ---
 
-# 快速上手
+# Quick Start
 
-三分钟带你打出表~
+Get started with table generation in three minutes~
 
-## 依赖环境
+## Dependencies
 
-- Node.js v22.12.0+: 其他没测过，理论上 20 以上都行吧。
+- Node.js v22.12.0+: Not tested with other versions, but theoretically should work with versions above 20.
 
 :::tip
-没有安装 Nodejs 环境的，可以参考 [VOLTA](https://docs.volta.sh/guide/getting-started) 进行 node 版本管理
+If you don't have Node.js installed, you can refer to [VOLTA](https://docs.volta.sh/guide/getting-started) for node version management
 :::
 
-## 安装 x2f
+## Install x2f
 
-0. 克隆项目
+0. Clone the project
 
     ```shell
     git clone https://github.com/tadazly/xlsx-fbs.git
     cd xlsx-fbs
     ```
 
-1. 初始化项目（跑个 npm install，仪式感不能少）
+1. Initialize the project (run npm install, can't skip the ceremony)
 
     ```shell
     npm install
     ```
 
-2. 链接全局指令
+2. Link global command
 
     ```shell
     npm link
     ```
 
-3. 测试一下，查看帮助信息
+3. Test it out, view help information
 
     ```shell
-    xlsx-fbs -h     # 默认命令
-    x2f -h          # 简写命令
+    xlsx-fbs -h     # Default command
+    x2f -h          # Short command
     ```
 
-- 想退出这段关系？删掉全局链接即可：
+- Want to end this relationship? Just remove the global link:
 
     ```shell
     npm unlink -g
     ```
 
-## 开始打表
+## Start Generating Tables
 
-项目内的 `example/` 有几张示例表。
+There are several example tables in the project's `example/` directory.
 
 ```
 example/
-├── singleConvert/       # 打单张表示例
+├── singleConvert/       # Single table generation example
 │   └── item.xlsx/        
-└── batchConvert/        # 批量打表示例
-    ├── 任意目录/           
-    └── $tables.xlsx     # 索引表（可选，但建议有）
+└── batchConvert/        # Batch table generation example
+    ├── any_directory/           
+    └── $tables.xlsx     # Index table (optional, but recommended)
 ```
 
 :::info
-索引表命名亦继承 `$items.xls` 都可以用。
+Index table naming can also inherit from `$items.xls`, both are usable.
 :::
 
-### 🎯 单张打表
+### 🎯 Single Table Generation
 
 ```shell
 cd example/singleConvert
 x2f item.xlsx --cpp --rust
 ```
 
-### 🎯 批量打表
+### 🎯 Batch Table Generation
 
 ```shell
 cd example/batchConvert
 x2f --js --csharp
 ```
 
-### 输出文件
+### Output Files
 
-输出的目录结构如下：
+The output directory structure is as follows:
 
 ```
 output[_censored]/
-├── fbs/         # 生成的 .fbs
-├── bin/         # 生成的二进制
-├── scripts/     # 生成的代码
-│   ├── cpp/     # C++ 代码
-│   ├── csharp/  # C# 代码
-│   └── ts/      # TypeScript 代码
-└── json/        # 由 Excel 生成的 json
+├── fbs/         # Generated .fbs
+├── bin/         # Generated binaries
+├── scripts/     # Generated code
+│   ├── cpp/     # C++ code
+│   ├── csharp/  # C# code
+│   └── ts/      # TypeScript code
+└── json/        # JSON generated from Excel
 ```

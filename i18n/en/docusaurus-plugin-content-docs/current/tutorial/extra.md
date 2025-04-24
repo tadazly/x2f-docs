@@ -2,21 +2,20 @@
 sidebar_position: 8
 ---
 
-# 附录
+# Appendix
 
-## 关于 output_censored 目录
+## About output_censored Directory
 
-- 打单张表时，若传入 `--censored-fields <fields>` 时，会同时生成 **删减版** 和 **完整版** 两份输出文件，分别对应在 `output_censored/` 和 `output/` 目录中。
+- When generating a single table, if `--censored-fields <fields>` is passed, both **censored version** and **complete version** output files will be generated, corresponding to the `output_censored/` and `output/` directories respectively.
 
-- 批量打表时，若 $tables.xlsx 中配置了 `censoredTable` 或 `censoredFields` 字段，会同时生成 **删减版** 和 **完整版** 两份输出文件，其中标记 `censoredTable` 的表，将 **不会** 输出到 `output_censored/` 目录中，只会输出到 `output/` 中。
+- When batch generating tables, if `censoredTable` or `censoredFields` fields are configured in $tables.xlsx, both **censored version** and **complete version** output files will be generated. Tables marked with `censoredTable` will **not** be output to the `output_censored/` directory, only to `output/`.
 
-- 没有配置 `censoredTable` 或 `censoredFields` 字段，只会输出一份 `output/`。
+- If `censoredTable` or `censoredFields` fields are not configured, only one `output/` will be generated.
 
-## 关于 file_identifier
+## About file_identifier
 
-x2f 使用 fbs 内容的 hash 作为 .fbs 的 file_identifier，可用生成代码中的 `BufferHasIdentifier` 接口来校验二进制与代码是否匹配。
+x2f uses the hash of the fbs content as the file_identifier for .fbs files. You can use the `BufferHasIdentifier` interface in the generated code to verify if the binary matches the code.
 
+## uint64/int64 Precision Issues
 
-## uint64/int64 精度问题
-
-在表格中存储诸如 9007199254740993 的数字时会丢失精度，可以将单元格设置为文本以保留精度。
+When storing numbers like 9007199254740993 in the table, precision may be lost. You can set the cell to text format to preserve precision.

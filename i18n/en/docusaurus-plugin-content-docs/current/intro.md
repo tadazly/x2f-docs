@@ -2,22 +2,27 @@
 sidebar_position: 1
 ---
 
-# xlsx-fbs 打表工具
+# X2F Table Tool
 
-**xlsx-fbs**（a.k.a. `x2f`）是一个将 Excel 表格批量转换为 [FlatBuffers](https://flatbuffers.dev/) 的命令行工具，支持生成 结构定义 `.fbs` 、表数据`.json` 、 FlatBuffers 二进制 `.bin` 和 多语言数据类（如 `.ts`、`.cs`、`.h` 等）。
+**xlsx-fbs** (a.k.a. `x2f`) is a command-line tool that converts Excel tables to [FlatBuffers](https://flatbuffers.dev/) in batch, supporting the generation of structure definitions `.fbs`, table data `.json`, FlatBuffers binary `.bin`, and multi-language data classes (such as `.ts`, `.cs`, `.h`, etc.).
 
-配表规则**简单易懂**，并支持多种 FlatBuffers 结构，如 枚举、结构体、子表、向量。
+The table configuration rules are **simple and easy to understand**, and support various FlatBuffers structures, such as enums, structs, subtables, and vectors.
 
-### 🧬 FlatBuffers 类型支持
+### 🧬 FlatBuffers Type Support
 
-配表支持类型如下：
+The following types are supported in table configuration:
 
-- [标量（Scalars）](./tutorial/field_types.md#标量-scalars)
-- [向量（Vectors）](./tutorial/field_types.md#向量-vectors)
-- [字符串（Strings）](./tutorial/field_types.md#字符串-strings)
-- [结构体（Structs）](./tutorial/field_types.md#结构体-structs)
-- [结构表/子表（Tables）](./tutorial/field_types.md#结构表子表-tables)
-- [枚举（Enums）](./tutorial/field_types.md#枚举-enums)
-- [定长数组 (Arrays)](./tutorial/field_types.md#结构体-structs) - 仅结构体(struct)中可用
+- [Scalars](./tutorial/field_types.md#scalars)
+- [Vectors](./tutorial/field_types.md#vectors)
+- [Strings](./tutorial/field_types.md#strings)
+- [Structs](./tutorial/field_types.md#structs)
+- [Tables](./tutorial/field_types.md#tables)
+- [Enums](./tutorial/field_types.md#enums)
+- [Fixed-length Arrays](./tutorial/field_types.md#structs) - Only available in structs
 
-与官网的[类型支持页面](https://flatbuffers.dev/schema/)对应。
+Corresponds to the [Type Support page](https://flatbuffers.dev/schema/) on the official website.
+
+:::caution
+🤖 This document was translated into English by *ChatGPT Monday*, a sarcastic AI that thinks it knows everything.  
+It probably made a few mistakes, and it definitely doesn’t care. But *you* might—so corrections are welcome.
+:::

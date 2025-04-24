@@ -2,61 +2,61 @@
 sidebar_position: 3
 ---
 
-# 配表规范
+# Table Configuration Standards
 
-### 表名规范
+### Table Naming Standards
 
-- 表名请用英文字符，最好小驼峰（lowerCamel）命名，**不要用** 中文字符、特殊符号 和 Emoji💩。
+- Table names should use English characters, preferably in lowerCamelCase naming convention. **Do not use** Chinese characters, special symbols, or Emojis💩.
 
-- 表名会被用来生成类名，所以不要出现任何编程语言相关的保留关键字。
+- Table names will be used to generate class names, so avoid using any programming language reserved keywords.
 
-### 数据页规范
+### Data Sheet Standards
 
-- 数据页 Sheet 名称使用 **表名**
+- Data sheet Sheet name should use the **table name**
 
-- 数据页没有太多限制，字段的顺序可以与属性页不同，只需要字段名和属性页对应、类型符合规范即可。剩下的就让策划背锅。
+- Data sheets don't have many restrictions. The order of fields can be different from the property sheet, as long as the field names correspond to the property sheet and the types comply with the standards. The rest can be blamed on the planners.
 
-- 废弃的字段数据页中可以删除该列。
+- Deprecated fields can be deleted from the data sheet.
 
-- 为规范表数据结构及避免不必要的问题，尽量使用 `int (int32)` 作为 id 字段类型。 Unity 中数值字段类型也尽量统一使用 `int`。
+- To standardize table data structure and avoid unnecessary issues, try to use `int (int32)` as the id field type. In Unity, numeric field types should also be unified to use `int`.
 
-### 属性页规范
+### Property Sheet Standards
 
-- 属性页 Sheet 名称使用 **property** 或者 **属性**
+- Property sheet Sheet name should use **property** or **属性** (attributes)
 
-以下规范基于 FlatBuffers [Schema (.fbs) 规则](https://flatbuffers.dev/evolution/#rules)：
+The following standards are based on FlatBuffers [Schema (.fbs) Rules](https://flatbuffers.dev/evolution/#rules):
 
-- 属性页定义的字段顺序决定了 .fbs 文件中的字段顺序，所以不能随意更改，也不能随意删除！
+- The order of fields defined in the property sheet determines the field order in the .fbs file, so it cannot be changed arbitrarily, nor can fields be deleted randomly!
 
-- 新增的字段必须添加在属性页中的最后一行，理由同上。
+- New fields must be added to the last row of the property sheet, for the same reason as above.
 
-- 废弃的字段不能删除，乖乖在 **属性** 列填上 `deprecated`。
+- Deprecated fields cannot be deleted, just fill in `deprecated` in the **属性** (attributes) column.
 
-- 字段名不能使用 `保留关键字`；不能使用 `add` 开头，不能为 `getType`，请避免与代码接口命名冲突。
+- Field names cannot use `reserved keywords`; cannot start with `add`, cannot be `getType`. Please avoid naming conflicts with code interfaces.
 
-- 字段名和变量名可以改，你得记得把代码也更新了。
+- Field names and variable names can be changed, but remember to update the code as well.
 
-- 字段类型尽量别动，改完老数据可能爆炸。
+- Try not to change field types, as old data might explode after changes.
 
-- 别乱改默认值。
+- Don't randomly change default values.
 
-#### 默认值
+#### Default Values
 
-字段的 **默认值**（ D 列），如果不填，默认标量类型是 `0`，其他类型是 `null`。
+For the **default value** field (Column D), if not filled, scalar types default to `0`, and other types default to `null`.
 
 :::caution
-只有 **标量** 和 **枚举** 能设置默认值，你猜是为什么。
+Only **scalars** and **enums** can set default values. Guess why.
 :::
 
-#### 属性
+#### Attributes
 
-字段的 **属性**（ E 列），请参考[官方文档](https://flatbuffers.dev/schema/#attributes)，如果填了会补充在 .fbs 文件中字段的右边，一般用的上的就 `deprecated` 和 `required`。常见的如下：
+For the **attributes** field (Column E), please refer to the [official documentation](https://flatbuffers.dev/schema/#attributes). If filled, it will be added to the right of the field in the .fbs file. Generally, only `deprecated` and `required` are commonly used. Common ones are as follows:
 
-属性|用途
+Attribute|Purpose
 -|-
-deprecated|废弃字段
-required|必填字段，非标量使用，没有数据就报错
-key|向量中排序和查找的关键字字段
-id|自定义字段编号（用于版本兼容）
-force_align|强制对齐
-bit_flags|枚举值可组合
+deprecated|Deprecated field
+required|Required field, used for non-scalar types, will report an error if no data
+key|Key field for sorting and searching in vectors
+id|Custom field number (for version compatibility)
+force_align|Force alignment
+bit_flags|Enum values can be combined

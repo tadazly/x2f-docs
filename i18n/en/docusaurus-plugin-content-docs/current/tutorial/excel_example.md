@@ -2,45 +2,45 @@
 sidebar_position: 2
 ---
 
-# 配表示例
+# Table Configuration Example
 
-仅简单展示，具体的请阅读 [**配表规范**](./excel_standards.md) 与 [**字段类型**](./field_types.md)。
+This is just a simple demonstration. For details, please read [**Table Configuration Standards**](./excel_standards.md) and [**Field Types**](./field_types.md).
 
-还提供了一个乱配的 [itemTable.xlsx](https://github.com/tadazly/xlsx-fbs/blob/master/example/singleConvert/itemTable.xlsx) 仅供娱乐参考～
+There's also a randomly configured [itemTable.xlsx](https://github.com/tadazly/xlsx-fbs/blob/master/example/singleConvert/itemTable.xlsx) for entertainment reference~
 
-下面是一个简单的示范，假设有一张 item.xlsx 表：
+Below is a simple example, assuming there's an item.xlsx table:
 
-### item: 数据页
+### item: Data Sheet
 
 :::tip
-数据页的第一行定义了字段名，与属性页的第一列中定义的字段名对应，顺序可以不同。
+The first row of the data sheet defines the field names, which correspond to the field names defined in the first column of the property sheet. The order can be different.
 :::
 
 A|B|C|D|E
 -|-|-|-|-
-道具id|道具名|描述|最大数|每日上限
-101|豆子|交易东西的基础货币|99999999|100000
-102|钻石|交易稀有物品的货币|99999999|
-1001|HP药|有了他你就能随便浪|9999|99
+Item ID|Item Name|Description|Max Count|Daily Limit
+101|Beans|Basic currency for trading|99999999|100000
+102|Diamonds|Currency for trading rare items|99999999|
+1001|HP Potion|With this, you can do whatever you want|9999|99
 
-### property: 属性页
+### property: Property Sheet
 
 :::tip
-属性页的 A 列定义 **字段名**，B 列定义了字段的 **变量名**，C 列定义字段的 **类型**，D 列定义字段的 **默认值**（可省略），E 列定义字段的 **属性**（可省略），后面几列随你发挥。  
-属性页的顺序是可以通过[打表参数 `--property-order`](./argument_list.md) 自定义的，默认是 ABCDE。
+Column A of the property sheet defines the **field name**, Column B defines the **variable name**, Column C defines the **type**, Column D defines the **default value** (optional), Column E defines the **attributes** (optional), and the following columns are up to you.  
+The order of the property sheet can be customized through the [table generation parameter `--property-order`](./argument_list.md#property-sheet-default-values), with the default being ABCDE.
 :::
 
 A|B|C|D|E|F
 -|-|-|-|-|-
-道具id|id|int|||一些功能注释
-道具名|name|string||required|
-描述|desc|string|||
-策划偷偷删掉的|wtf|uint||deprecated|字段就算不用了也最好保留，手动标记废弃
-最大数|max|number|9999||玩家可以拥有的最大数量
-每日上限|dailyLimit|number|||每天最多获得数量限制
+Item ID|id|int|||Some functional comments
+Item Name|name|string||required|
+Description|desc|string|||
+Secretly Deleted by Planner|wtf|uint||deprecated|It's better to keep fields even if not used, just mark them as deprecated
+Max Count|max|number|9999||Maximum quantity a player can have
+Daily Limit|dailyLimit|number|||Maximum daily acquisition limit
 
 
-**x2f 打表** 会自动生成下述结构描述(.fbs)文件：
+**x2f table generation** will automatically generate the following structure description (.fbs) file:
 
 ```
 // item.xlsx
@@ -48,17 +48,17 @@ A|B|C|D|E|F
 namespace Xlsx;
 
 table ItemInfo {
-    /// 道具id
+    /// Item ID
     id:int;
-    /// 道具名
+    /// Item Name
     name:string (required);
-    /// 描述
+    /// Description
     desc:string;
-    /// 策划偷偷删掉的
+    /// Secretly Deleted by Planner
     wtf:uint (deprecated);
-    /// 最大数
+    /// Max Count
     max:uint = 9999;
-    /// 每日上限
+    /// Daily Limit
     daily_limit:uint;
 }
 
@@ -67,4 +67,3 @@ table Item {
 }
 
 root_type Item;
-```

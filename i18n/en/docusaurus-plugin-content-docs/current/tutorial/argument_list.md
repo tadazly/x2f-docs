@@ -2,69 +2,85 @@
 sidebar_position: 7
 ---
 
-# 参数列表
+# Argument List
 
-- `-o, --output <path>` 输出路径，默认输出到执行 `xlsx-fbs` 的文件夹的 `output/` 下。
+```shell
+x2f [ input ] [ flatc options ] [ xlsx-fbs options ]
+```
 
-- `-n, --namespace <name>` 生成代码的命名空间，默认是 `Xlsx`。
+### input Options
 
-- `-k, --default-key <field>` 默认不使用 key 属性，传入后，若表里没有设置 key 属性的字段，则使用该字段作为 key。
+Excel file path or folder path containing Excel files. If a file is passed, it converts a single table; if a path is passed, it **recursively** converts all tables in the folder. If not passed, it defaults to converting all tables in the execution path of `x2f`.
 
-- `--binary-extension <ext>` 输出的二进制文件的后缀名，默认输出 bin，你爱发疯可以填 wtf.bytes。
+### flatc Options
 
-- `--censored-fields <fields>` 删减字段，使用 `,` 连接，会生成一份删减版本的文件到 `output_censored/` 目录。（注意不是删除数据，而是把整个字段从 .fbs 中删除！）
+For the list of supported code languages and complete parameters for **flatc**, please refer to the [FlatBuffers documentation](https://flatbuffers.dev/flatc/). xlsx-fbs will pass the parameters to **flatc**. Here are some commonly used ones:
 
-- `--censored-output <path>` 指定删减表的输出路径，默认是 `${output}_censored/`。
+- `--cpp --csharp --ts --java` etc., generate code for the corresponding language.
 
-- `--output-bin <path>` 拷贝输出的 bin 到指定路径。此类拷贝参数仅批量打表可用，且都会保留原输出路径下的文件。
+### xlsx-fbs Options
 
-- `--output-csharp <path>` 拷贝输出的代码到指定路径，以 C# 为例，其他请替换成对应语言名。
+- `-o, --output <path>` Output path, defaults to `output/` in the folder where `xlsx-fbs` is executed.
 
-- `--censored-output-bin <path>` 拷贝删减版输出的 bin 到指定路径。
+- `-n, --namespace <name>` Namespace for generated code, defaults to `Xlsx`.
 
-- `--censored-output-csharp <path>` 拷贝删减版输出的代码到指定路径，以 C# 为例，其他请替换成对应语言名。
+- `-k, --default-key <field>` By default, no key attribute is used. If passed, if no field in the table has the key attribute set, this field will be used as the key.
 
-- `--clean-output` 批量打表前，强制清空输出目录，小心使用，不要误删无辜。
+- `--binary-extension <ext>` Suffix for output binary files, defaults to bin. You can go crazy and fill in wtf.bytes if you want.
 
-- `--empty-string` 表中字符串类型的字段在创建二进制时默认填充空字符串而不是 null。
+- `--censored-fields <fields>` Censored fields, connected with `,`. Will generate a censored version of the file to the `output_censored/` directory. (Note: This is not deleting data, but removing the entire field from the .fbs file!)
 
-- `--disable-merge-table`  批量打表时，若在配置表中配置了 `merge` 字段，默认会为这些表生成 `mergeTable` 的代码和二进制，不想要此功能可禁用。
+- `--censored-output <path>` Specify the output path for censored tables, defaults to `${output}_censored/`.
 
-- `--disable-incremental` 批量打表默认开启增量打表，也可以手动关闭。
+- `--output-bin <path>` Copy output bin to specified path. This type of copy parameter is only available for batch table generation, and will preserve files in the original output path.
 
-- `--enable-streaming-read` 开启 .xlsx 格式的流式读取，速度快，内存小，中文可能会乱码😠，还有不稳定出现数据变成 sharedString 的 bug，建议先**不要用**，等 ExcelJS 项目修复。
+- `--output-csharp <path>` Copy output code to specified path, using C# as an example. Replace with corresponding language name for others.
 
-- `--table-class-suffix <suffix>` 生成的表格类名后缀，默认是空字符串。比如 `item.xlsx` 表生成的表格类名就是 `Item`。
+- `--censored-output-bin <path>` Copy censored version output bin to specified path.
 
-- `--data-class-suffix <suffix>` 生成的表格数据类名后缀，默认是 `Info`。比如 `item.xlsx` 表生成的数据类名就是 `ItemInfo`；必须避免出现使用类后缀结尾命名的表，比如批量打表时，目录下同时有 `drop.xlsx` 和 `dropInfo.xlsx`，那么第一张表的数据类名会和第二张表的类名冲突，BOOM💥。
+- `--censored-output-csharp <path>` Copy censored version output code to specified path, using C# as an example. Replace with corresponding language name for others.
 
-- `--multi-thread <number>` 批量打表时的多线程数量，默认 6 。
+- `--clean-output` Force clear output directory before batch table generation. Use with caution, don't accidentally delete innocent files.
 
-- `--minimal-info` 最小化输出信息，可选范围 `log < info < warn < error`，默认 `info`。
+- `--empty-string` By default, string type fields in the table are filled with empty strings instead of null when creating binaries.
 
-- `--allow-wild-table` 批量打表时允许打野表（$tables.xlsx中未配置的表）。慎用，确保不会把奇怪的东西打出来。
+- `--disable-merge-table` When batch generating tables, if the `merge` field is configured in the configuration table, code and binaries for `mergeTable` will be generated by default. This feature can be disabled if not needed.
 
-- `--property-order` 自定义属性页顺序，默认 ABCDE。可根据实际表格中列的顺序来定义，例如想直接用表格属性页中 A 列的字段名作为变量名，B列已经定义了类型，并且 C 列被注释占用，那就传入 AABDE，顺序与 **字段名->变量名->类型->默认值->属性** 对应即可。
+- `--disable-incremental` Batch table generation has incremental generation enabled by default, but can be manually disabled.
+
+- `--enable-streaming-read` Enable streaming read for .xlsx format. Fast, small memory usage, but Chinese characters might be garbled😠, and there's an unstable bug where data might become sharedString. Suggest **not using** for now, wait for ExcelJS project to fix.
+
+- `--table-class-suffix <suffix>` Suffix for generated table class names, defaults to empty string. For example, the table class name generated from `item.xlsx` would be `Item`.
+
+- `--data-class-suffix <suffix>` Suffix for generated table data class names, defaults to `Info`. For example, the data class name generated from `item.xlsx` would be `ItemInfo`. Must avoid having tables named with class suffix endings. For example, when batch generating tables, if there are both `drop.xlsx` and `dropInfo.xlsx` in the directory, the data class name of the first table will conflict with the class name of the second table, BOOM💥.
+
+- `--multi-thread <number>` Number of threads for batch table generation, defaults to 6.
+
+- `--minimal-info` Minimize output information, optional range `log < info < warn < error`, defaults to `info`.
+
+- `--allow-wild-table` Allow wild tables (tables not configured in $tables.xlsx) during batch table generation. Use with caution, ensure no strange things are generated.
 
     :::info
-    #### 属性页的默认值：
-        - A: 数据页的字段名（可随意填写，和属性页做映射关系，并作为生成的 .fbs 中的字段名注释）
-        - B: 字段对应的变量名（对应 .fbs 中的 field，和代码中的成员字段名）
-        - C: 字段对应的类型（`short`, `int`, `string` ... 等）
-        - D: 字段的默认值 （对应 .fbs 中的默认值）
-        - E: 字段的属性 （对应 .fbs 中的 Attribute）
+    #### Property Sheet Default Values:
+        - A: Data sheet field name (can be filled freely, maps to property sheet, and serves as field name comments in generated .fbs)
+        - B: Field variable name (corresponds to field in .fbs, and member field name in code)
+        - C: Field type (`short`, `int`, `string` ... etc.)
+        - D: Field default value (corresponds to default value in .fbs)
+        - E: Field attributes (corresponds to Attributes in .fbs)
     :::
 
-- `--csharp-unity-loader` 生成 Unity 的表格加载类，数据页需配置 int 类型的 id 字段。
+- `--property-order` Customize property sheet order, defaults to ABCDE. Can be defined according to the actual column order in the table. For example, if you want to use the field name in column A of the table property sheet as the variable name, column B already defines the type, and column C is occupied by comments, then pass AABDE. The order corresponds to **field name -> variable name -> type -> default value -> attributes**.
 
-- `--csharp-unity-loader-suffix` 表格加载类后缀，默认 `Table`，要想简短可以用 `s` 。
+- `--csharp-unity-loader` Generate Unity table loader class. Data sheet needs to configure int type id field.
 
-- `--js` 打包 js。 浏览器用输出的 `.js`, node 用 `.cjs.js` 或 `.esm.js`。 
+- `--csharp-unity-loader-suffix` Table loader class suffix, defaults to `Table`. For brevity, you can use `s`.
+
+- `--js` Package js. Use `.js` for browser, `.cjs.js` or `.esm.js` for node.
 
 - `--js-sourcemap`
 
-- `--js-exclude-flatbuffers` 打包的 js 中移除 flatbuffers 代码，确保在外部正确引入。
+- `--js-exclude-flatbuffers` Remove flatbuffers code from packaged js, ensure correct external import.
 
-- `--js-browser-target <target>` 默认 `es2017`，可以传哪些[自己研究](https://esbuild.github.io/api/#target)，使用 `,` 连接，比如 `--js-browser-target "es2020,chrome58,edge16,firefox57"`
+- `--js-browser-target <target>` Defaults to `es2017`, you can research what to pass [yourself](https://esbuild.github.io/api/#target), use `,` to connect, for example `--js-browser-target "es2020,chrome58,edge16,firefox57"`
 
-- `--js-node-target <target>` 默认 `node20`。
+- `--js-node-target <target>` Defaults to `node20`.
