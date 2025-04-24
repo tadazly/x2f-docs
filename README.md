@@ -1,41 +1,68 @@
-# Website
+# X2F 文档
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+### 简介
 
-### Installation
+X2F 是一个配置简单、容易上手的 Excel 转 FlatBuffers 工具，适合中小型游戏配置表。
 
-```
-$ yarn
-```
+仓库地址 => [xlsx-fbs](https://github.com/tadazly/xlsx-fbs)，欢迎尝试。
 
-### Local Development
+### 关于本文档
 
-```
-$ yarn start
-```
+本文档使用 [Docusaurus](https://docusaurus.io/) 生成、 GitHub Actions 自动部署，有兴趣的可以参考[github-pages-docusaurus](https://github.com/LayZeeDK/github-pages-docusaurus)搭建环境，下面列举关键点。
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+建议使用本项目提供的 [`deploy-docs.yml`](.github/workflows/deploy-docs.yml) 文件。
 
-### Build
+#### 1. 创建文档项目
 
-```
-$ yarn build
+```bash
+npx create-docusaurus@latest my-website classic
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+#### 2. 修改 `docusaurus.config.js` 配置
 
-### Deployment
+- 创建常量 `organizationName` 和 `projectName`
 
-Using SSH:
+    ```js
+    const organizationName = "<github-organization-name>";
+    const projectName = "<repository-name>";
+    ```
 
-```
-$ USE_SSH=true yarn deploy
-```
+- 修改配置如下
 
-Not using SSH:
+    ```js
+    const config = {
+    // (...)
+    url: `https://${organizationName}.github.io`,
+    baseUrl: `/${projectName}/`,
+    organizationName,
+    projectName,
+    // (...)
+    presets: [
+        [
+        "classic",
+        /** @type {import('@docusaurus/preset-classic').Options} */
+        ({
+            // (...)
+            docs: {
+            // (...)
+            editUrl: `https://github.com/${organizationName}/${projectName}/tree/main/`,
+            },
+            blog: {
+            // (...)
+            editUrl: `https://github.com/${organizationName}/${projectName}/tree/main/`,
+            },
+        }),
+        ],
+    ],
+    };
+    ```
 
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
+#### 3. 拷贝 [`.github/workflows/deploy-docs.yml`](.github/workflows/deploy-docs.yml) 到自己仓库的相同路径
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+修改 `branches`、`Build steps` 和 `build output path` 符合您的项目。
+
+#### 4. 在 `YourGitHubRepo/Settings/Pages` 中设置 `Source` 为 `GitHub Actions`。
+
+接下来，您只需推送项目等待奇迹发生。
+
+如果帮助到您，请为我点赞 😊
