@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# xlsx-fbs 打表工具
+# X2F 打表工具
 
 **xlsx-fbs**（a.k.a. `x2f`）是一个将 Excel 表格批量转换为 [FlatBuffers](https://flatbuffers.dev/) 的命令行工具，支持生成 结构定义 `.fbs` 、表数据`.json` 、 FlatBuffers 二进制 `.bin` 和 多语言数据类（如 `.ts`、`.cs`、`.h` 等）。
 

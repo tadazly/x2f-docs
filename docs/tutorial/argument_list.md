@@ -4,6 +4,22 @@ sidebar_position: 7
 
 # 参数列表
 
+```shell
+x2f [ input ] [ flatc options ] [ xlsx-fbs options ]
+```
+
+### input 选项
+
+Excel 文件路径或 Excel 所在的文件夹路径，传入文件则转换单张表，传入路径则 **递归** 转换文件夹下的所有表，不传默认转换 `x2f` 执行路径下的所有表。 
+
+### flatc 选项
+
+可转换的代码语言和 **flatc** 的完整参数列表请参考 [FlatBuffers 文档](https://flatbuffers.dev/flatc/)，xlsx-fbs 会将参数传递给 **flatc**。以下列举一些常用的：
+
+- `--cpp --csharp --ts --java` 等，生成对应语言的代码。
+
+### xlsx-fbs 选项
+
 - `-o, --output <path>` 输出路径，默认输出到执行 `xlsx-fbs` 的文件夹的 `output/` 下。
 
 - `-n, --namespace <name>` 生成代码的命名空间，默认是 `Xlsx`。
@@ -44,8 +60,6 @@ sidebar_position: 7
 
 - `--allow-wild-table` 批量打表时允许打野表（$tables.xlsx中未配置的表）。慎用，确保不会把奇怪的东西打出来。
 
-- `--property-order` 自定义属性页顺序，默认 ABCDE。可根据实际表格中列的顺序来定义，例如想直接用表格属性页中 A 列的字段名作为变量名，B列已经定义了类型，并且 C 列被注释占用，那就传入 AABDE，顺序与 **字段名->变量名->类型->默认值->属性** 对应即可。
-
     :::info
     #### 属性页的默认值：
         - A: 数据页的字段名（可随意填写，和属性页做映射关系，并作为生成的 .fbs 中的字段名注释）
@@ -54,6 +68,8 @@ sidebar_position: 7
         - D: 字段的默认值 （对应 .fbs 中的默认值）
         - E: 字段的属性 （对应 .fbs 中的 Attribute）
     :::
+
+- `--property-order` 自定义属性页顺序，默认 ABCDE。可根据实际表格中列的顺序来定义，例如想直接用表格属性页中 A 列的字段名作为变量名，B列已经定义了类型，并且 C 列被注释占用，那就传入 AABDE，顺序与 **字段名->变量名->类型->默认值->属性** 对应即可。
 
 - `--csharp-unity-loader` 生成 Unity 的表格加载类，数据页需配置 int 类型的 id 字段。
 

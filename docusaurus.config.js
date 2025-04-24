@@ -39,7 +39,7 @@ const config = {
     locales: ['zh', 'en'],
     localeConfigs: {
       zh: {
-        label: '简体中文',
+        label: '中文',
         direction: 'ltr',
       },
       en: {
@@ -61,21 +61,6 @@ const config = {
           editUrl:
             `https://github.com/${organizationName}/${projectName}/tree/main/`,
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            `https://github.com/${organizationName}/${projectName}/tree/main/`,
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -89,7 +74,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'xlsx-fbs',
+        title: 'X2F',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -101,7 +86,10 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'localeDropdown',
+            position: 'right',
+          },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -157,6 +145,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['csharp']
       },
     }),
 };
