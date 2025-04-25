@@ -55,21 +55,21 @@ sidebar_position: 1
 ```
 example/
 ├── singleConvert/       # 打单张表示例
-│   └── item.xlsx/        
+│   └── itemTable.xlsx/        
 └── batchConvert/        # 批量打表示例
     ├── 任意目录/           
     └── $tables.xlsx     # 索引表（可选，但建议有）
 ```
 
 :::info
-索引表命名亦继承 `$items.xls` 都可以用。
+索引表命名使用 `$` 开头即可，比如 `$items.xls` 也可以作为索引表。
 :::
 
 ### 🎯 单张打表
 
 ```shell
 cd example/singleConvert
-x2f item.xlsx --cpp --rust
+x2f itemTable.xlsx --cpp --rust
 ```
 
 ### 🎯 批量打表

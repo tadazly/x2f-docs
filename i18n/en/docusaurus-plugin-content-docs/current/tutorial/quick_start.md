@@ -55,21 +55,21 @@ There are several example tables in the project's `example/` directory.
 ```
 example/
 ├── singleConvert/       # Single table generation example
-│   └── item.xlsx/        
+│   └── itemTable.xlsx/        
 └── batchConvert/        # Batch table generation example
     ├── any_directory/           
     └── $tables.xlsx     # Index table (optional, but recommended)
 ```
 
 :::info
-Index table naming can also inherit from `$items.xls`, both are usable.
+Index table naming starts with `$` . For example, `$items.xls` can also be used as an index table.
 :::
 
 ### 🎯 Single Table Generation
 
 ```shell
 cd example/singleConvert
-x2f item.xlsx --cpp --rust
+x2f itemTable.xlsx --cpp --rust
 ```
 
 ### 🎯 Batch Table Generation
