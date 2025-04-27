@@ -16,12 +16,12 @@ sidebar_position: 6
 Asset/
 ├── HotUpdate/       
 │   └── Configs/        
-│   │   └── Xls/           # 放置 x2f 生成的二进制     
+│   │   └── Xls/           # x2f 生成的二进制     
 │   └── Scripts/
-│       ├── GameLogic/      # 游戏逻辑
-│       └── Xls/           # 放置 x2f 生成的代码
+│       ├── GameLogic/     # 游戏逻辑
+│       └── Xls/           # x2f 生成的代码
 └── Plugins/        
-    ├── FlatBuffers/        # 放置 FlatBuffers 库
+    ├── FlatBuffers/       # FlatBuffers 库
     └── UniTask/     
 ```
 
@@ -134,7 +134,7 @@ async void Start()
 
 ### 严格校验标识 STRICT_VERIFICATION
 
-- 设置 `STRICT_VERIFICATION` 时，会在 `LoadAsync/LoadAllAsync` 时严格校验 file_identifier ，不匹配时会抛出异常，否则只会在控制台打印错误。
+- 设置 `STRICT_VERIFICATION` 时，会在 `LoadAsync/LoadAllAsync` 时严格校验 file_identifier 和 buffer 结构，不匹配时会抛出异常，否则只会在控制台打印错误。
 
 ### 关于 Assembly Definition References
 
@@ -147,3 +147,4 @@ async void Start()
 ### 热更新建议
 
 - 打包时，使用 `LZ4` 压缩，可以显著减少二进制大小。
+- 不要将 `FlatBuffers.dll` 加入热更新，否则性能会下降。
