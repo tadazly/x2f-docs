@@ -8,7 +8,7 @@ sidebar_position: 6
 
 - [YooAsset 2.3.x](https://www.yooasset.com/): 按照官方教程配置。
 - [UniTask](https://github.com/Cysharp/UniTask/releases): 通过 UPM 的形式安装到项目中。
-- [FlatBuffers](https://github.com/google/flatbuffers/tree/master/net/FlatBuffers): 把 net/FlatBuffers 文件夹下的 .cs 文件复制到项目中。
+- [FlatBuffers v25.2.10](https://github.com/google/flatbuffers/tree/master/net/FlatBuffers): 把 net/FlatBuffers 文件夹下的 .cs 文件复制到项目中。
 
 ### 示例 Unity 项目结构：
 

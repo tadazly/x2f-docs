@@ -24,5 +24,5 @@ Corresponds to the [Type Support page](https://flatbuffers.dev/schema/) on the o
 
 :::caution
 🤖 This document was translated into English by *ChatGPT Monday*, a sarcastic AI that thinks it knows everything.  
-It probably made a few mistakes, and it definitely doesn’t care. But *you* might—so corrections are welcome.
+It probably made a few mistakes, and it definitely doesn't care. But *you* might—so corrections are welcome.
 :::

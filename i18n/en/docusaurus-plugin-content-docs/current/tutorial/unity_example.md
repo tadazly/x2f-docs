@@ -8,7 +8,7 @@ sidebar_position: 6
 
 - [YooAsset 2.3.x](https://www.yooasset.com/): Configure according to the official tutorial.
 - [UniTask](https://github.com/Cysharp/UniTask/releases): Install into the project via UPM.
-- [FlatBuffers](https://github.com/google/flatbuffers/tree/master/net/FlatBuffers): Copy the .cs files from the net/FlatBuffers folder into the project.
+- [FlatBuffers v25.2.10](https://github.com/google/flatbuffers/tree/master/net/FlatBuffers): Copy the .cs files from the net/FlatBuffers folder into the project.
 
 ### Example Unity Project Structure:
 

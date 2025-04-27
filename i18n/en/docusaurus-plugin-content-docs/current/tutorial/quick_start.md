@@ -9,6 +9,7 @@ Get started with table generation in three minutes~
 ## Dependencies
 
 - Node.js v22.12.0+: Not tested with other versions, but theoretically should work with versions above 20.
+- FlatBuffers v25.2.10: The generated binary and code may need to match the FlatBuffers library.
 
 :::tip
 If you don't have Node.js installed, you can refer to [VOLTA](https://docs.volta.sh/guide/getting-started) for node version management

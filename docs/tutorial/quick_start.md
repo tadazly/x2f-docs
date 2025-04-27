@@ -9,6 +9,7 @@ sidebar_position: 1
 ## 依赖环境
 
 - Node.js v22.12.0+: 其他没测过，理论上 20 以上都行吧。
+- FlatBuffers v25.2.10: Flatc 生成的二进制与代码可能需要与 FlatBuffers 库对应。
 
 :::tip
 没有安装 Nodejs 环境的，可以参考 [VOLTA](https://docs.volta.sh/guide/getting-started) 进行 node 版本管理
