@@ -6,15 +6,16 @@ sidebar_position: 3
 
 ## Runtime Issues
 
-### Exception: System.OverflowException: Value was either too large or too small for an Int16.
+### System.OverflowException: Value was either too large or too small for an Int16.
 
 - Trigger condition:
 
 ```csharp
+Xls.SomeTable.Instance.LoadAsync();
 Xls.MergeTableLoader.LoadAllAsync();
 ```
 
-- Cause: When there are a large number of tables in the merged table, the offset exceeds the range of the `short` type in the verification function.
+- Cause: When there is a large amount of data in the table, the offset exceeds the range of the `short` type in the verification method.
 
 ```csharp title="FlatBuffers/FlatBufferVerify.cs" {8} showLineNumbers
 private short GetVRelOffset(int pos, short vtableOffset)
@@ -37,8 +38,12 @@ private short GetVRelOffset(int pos, short vtableOffset)
 
 - Solutions:
 
-    1. Only verify that the binary file_identifier matches, ignore this exception.
+    1. Modify the `GetVRelOffset` method in FlatBuffers to use `int` type instead of `short` type.
 
-    2. Do not use the merge table feature, only use single table loading.
+    ```csharp title="FlatBuffers/FlatBufferVerify.cs" {2} showLineNumbers
+    // short vtable = Convert.ToInt16(pos - ReadSOffsetT(verifier_buffer, pos));
+    // 👇 Change to this
+    int vtable = pos - ReadSOffsetT(verifier_buffer, pos);
+    ```
 
-    3. Modify the relevant methods in the `FlatBufferVerify.cs` file to use `int` type instead of `short` type. 
+    2. Or modify the `TableValidator.Validate` method in UnityTemplate to only verify that the `identifier` matches, without verifying the `buffer` structure. 

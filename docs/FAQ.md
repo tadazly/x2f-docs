@@ -6,15 +6,16 @@ sidebar_position: 3
 
 ## 运行时问题
 
-### Exception: System.OverflowException: Value was either too large or too small for an Int16. 
+### System.OverflowException: Value was either too large or too small for an Int16. 
 
 - 触发时机：
 
 ```csharp
+Xls.SomeTable.Instance.LoadAsync();
 Xls.MergeTableLoader.LoadAllAsync();
 ```
 
-- 问题原因：合并表中存在大量表时，偏移量超出验证方法中的 `short` 类型范围。
+- 问题原因：表中存在大量数据时，偏移量超出验证方法中的 `short` 类型范围。
 
 ```csharp title="FlatBuffers/FlatBufferVerify.cs" {8} showLineNumbers
 private short GetVRelOffset(int pos, short vtableOffset)
@@ -37,8 +38,12 @@ private short GetVRelOffset(int pos, short vtableOffset)
 
 - 解决方案：
 
-    1. 只验证二进制的 file_identifier 是否匹配，无视该异常。
+    1. 修改 FlatBuffers 的 `GetVRelOffset` 方法，使用 `int` 类型代替 `short` 类型。
 
-    2. 不使用合并表功能，仅使用单表加载。
+    ```csharp title="FlatBuffers/FlatBufferVerify.cs" {2} showLineNumbers
+    // short vtable = Convert.ToInt16(pos - ReadSOffsetT(verifier_buffer, pos));
+    // 👇 修改成下面这样
+    int vtable = pos - ReadSOffsetT(verifier_buffer, pos);
+    ```
 
-    3. 修改 `FlatBufferVerify.cs` 文件中的相关方法，使用 `int` 类型代替 `short` 类型。
+    2. 或者修改 UnityTemplate 的 `TableValidator.Validate` 方法，只验证 `identifier` 是否匹配，不验证 `buffer` 结构。
