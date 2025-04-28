@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -46,7 +46,7 @@ const config = {
         label: 'English',
         direction: 'ltr',
       },
-    },  
+    },
   },
 
   presets: [
@@ -132,6 +132,22 @@ const config = {
         additionalLanguages: ['csharp']
       },
     }),
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        // ... Your options.
+        // `hashed` is recommended as long-term-cache of index file is possible.
+        hashed: true,
+        // For Docs using Chinese, The `language` is recommended to set to:
+        // ```
+        language: ["en", "zh"],
+        removeDefaultStopWordFilter: true,
+        // ```
+      }),
+    ],
+  ],
 };
 
 export default config;
