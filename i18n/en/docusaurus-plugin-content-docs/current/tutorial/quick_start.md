@@ -51,10 +51,10 @@ If you don't have Node.js installed, you can refer to [VOLTA](https://docs.volta
 
 ## Start Generating Tables
 
-There are several example tables in the project's `example/` directory.
+There are several example tables in the project's `example_en/` directory.
 
 ```
-example/
+example_en/
 ├── singleConvert/       # Single table generation example
 │   └── itemTable.xlsx/        
 └── batchConvert/        # Batch table generation example
@@ -64,6 +64,8 @@ example/
 
 :::info
 Index table naming starts with `$` . For example, `$items.xls` can also be used as an index table.
+
+Please forgive me for being lazy — I only translated itemTable.xlsx and $tables.xlsx as examples.
 :::
 
 ### 🎯 Single Table Generation

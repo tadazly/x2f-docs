@@ -45,7 +45,7 @@ For the **type** field (Column C), it's best to fill in *explicit types*, such a
     Try to avoid 64-bit types unless you want your data to explode.
 
 :::tip
-Below are some more complex types: enums, structs, and tables (subtables). It's recommended to refer to the usage in [`itemTable.xlsx`](https://github.com/tadazly/xlsx-fbs/blob/master/example/singleConvert/itemTable.xlsx) for comparison.
+Below are some more complex types: enums, structs, and tables (subtables). It's recommended to refer to the usage in [`itemTable.xlsx`](https://github.com/tadazly/xlsx-fbs/blob/master/example_en/singleConvert/itemTable.xlsx) for comparison.
 :::
 
 ### Enums

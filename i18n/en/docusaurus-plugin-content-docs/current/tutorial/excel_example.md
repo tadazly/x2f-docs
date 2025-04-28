@@ -6,7 +6,7 @@ sidebar_position: 2
 
 This is just a simple demonstration. For details, please read [**Table Configuration Standards**](./excel_standards.md) and [**Field Types**](./field_types.md).
 
-There's also a randomly configured [itemTable.xlsx](https://github.com/tadazly/xlsx-fbs/blob/master/example/singleConvert/itemTable.xlsx) for entertainment reference~
+There's also a randomly configured [itemTable.xlsx](https://github.com/tadazly/xlsx-fbs/blob/master/example_en/singleConvert/itemTable.xlsx) for entertainment reference~
 
 Below is a simple example, assuming there's an item.xlsx table:
 
