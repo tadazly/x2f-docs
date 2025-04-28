@@ -18,7 +18,7 @@ The following types are supported in table configuration:
 - [Structs](./tutorial/field_types.md#structs)
 - [Tables](./tutorial/field_types.md#tables)
 - [Enums](./tutorial/field_types.md#enums)
-- [Fixed-length Arrays](./tutorial/field_types.md#structs) - Only available in structs
+- [Fixed-size Arrays](./tutorial/field_types.md#structs) - Only available in structs
 
 Corresponds to the [Type Support page](https://flatbuffers.dev/schema/) on the official website.
 

@@ -4,6 +4,26 @@ sidebar_position: 4
 
 # 常见问题
 
+## 打表问题
+
+### 什么时候会生成 output_censored 目录
+
+- 打单张表时，若传入 `--censored-fields <fields>` 时，会同时生成 **删减版** 和 **完整版** 两份输出文件，分别对应在 `output_censored/` 和 `output/` 目录中。
+
+- 批量打表时，若 $tables.xlsx 中配置了 `censoredTable` 或 `censoredFields` 字段，会同时生成 **删减版** 和 **完整版** 两份输出文件，其中标记 `censoredTable` 的表，将 **不会** 输出到 `output_censored/` 目录中，只会输出到 `output/` 中。
+
+- 没有配置 `censoredTable` 或 `censoredFields` 字段，只会输出一份 `output/`。
+
+### 关于 file_identifier
+
+x2f 使用 .fbs 文件内容 **SHA-256** 的前四个字符作为 file_identifier。
+
+可用生成代码中的 `BufferHasIdentifier` 接口来校验二进制与代码是否匹配（若使用 x2f 生成的 Unity 表格加载类， `Load` 时会自动校验）。
+
+### uint64/int64 精度问题
+
+在表格中存储诸如 `9007199254740993` 的数字时会丢失精度，可以将单元格设置为文本以保留精度。
+
 ## 运行时问题
 
 ### [ C# ] System.OverflowException: Value was either too large or too small for an Int16. 

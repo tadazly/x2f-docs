@@ -18,6 +18,8 @@ For the list of supported code languages and complete parameters for **flatc**, 
 
 - `--cpp --csharp --ts --java` etc., generate code for the corresponding language.
 
+- `--gen-onefile` Generate single output file per table for C#, Go, and Python. 
+
 ### xlsx-fbs Options
 
 - `-o, --output <path>` Output path, defaults to `output/` in the folder where `xlsx-fbs` is executed.

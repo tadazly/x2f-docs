@@ -18,6 +18,8 @@ Excel 文件路径或 Excel 所在的文件夹路径，传入文件则转换单�
 
 - `--cpp --csharp --ts --java` 等，生成对应语言的代码。
 
+- `--gen-onefile` C#, Go, 和 Python 的每张表的代码会输出为单个文件。
+
 ### xlsx-fbs 选项
 
 - `-o, --output <path>` 输出路径，默认输出到执行 `xlsx-fbs` 的文件夹的 `output/` 下。

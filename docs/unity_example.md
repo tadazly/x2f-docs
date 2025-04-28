@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Unity 示例
 
-下面展示 **YooAsset + HybridCLR 热更新配表** 方案。最后附带如何[自定义加载逻辑](#自定义加载逻辑)的说明。
+下面展示 **YooAsset + HybridCLR 热更新配表** 方案。最后附带如何[自定义加载表二进制逻辑](#自定义加载逻辑)的说明。
 
 ### Unity 项目依赖
 
