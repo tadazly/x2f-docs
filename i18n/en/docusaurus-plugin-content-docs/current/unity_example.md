@@ -1,10 +1,10 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 ---
 
-# Unity Hot Update Example
+# Unity Example
 
-This example shows the YooAsset + HybridCLR hot update table solution. Also, there is a solution for [customizing the buffer loading logic](#custom-buffer-loading-logic).
+This example shows the **YooAsset + HybridCLR hot update table** solution. Also, there is a solution for [customizing the buffer loading logic](#custom-buffer-loading-logic).
 
 ### Unity Project Dependencies
 
@@ -87,7 +87,7 @@ AssetBundle Collector:
 - Enable `Enable Addressable`
 - Use `AddressByFileName` addressing mode
 
-### Example Code
+### Coding Example
 
 ```csharp
 async void Start()

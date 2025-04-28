@@ -45,26 +45,32 @@ A|B|C|D|E|F
 ```
 // item.xlsx
 
+file_identifier "4D4D";
+
 namespace Xlsx;
 
 table ItemInfo {
-    /// 道具id
-    id:int;
-    /// 道具名
-    name:string (required);
-    /// 描述
-    desc:string;
-    /// 策划偷偷删掉的
-    wtf:uint (deprecated);
-    /// 最大数
-    max:uint = 9999;
-    /// 每日上限
-    daily_limit:uint;
+  /// 道具id
+  id:int;
+  /// 道具名
+  name:string (required);
+  /// 描述
+  desc:string;
+  /// 策划偷偷删掉的
+  wtf:uint (deprecated);
+  /// 最大数
+  max:int32 = 9999;
+  /// 每日上限
+  daily_limit:int32;
 }
 
 table Item {
-    item_infos:[ItemInfo];
+  item_infos:[ItemInfo];
 }
 
 root_type Item;
 ```
+
+:::info
+`number` 类型会被自动推断成符合数值的标量类型，优先匹配有符号类型，其次无符号类型。
+:::

@@ -45,6 +45,8 @@ Daily Limit|dailyLimit|number|||Maximum daily acquisition limit
 ```
 // item.xlsx
 
+file_identifier "DA3C";
+
 namespace Xlsx;
 
 table ItemInfo {
@@ -57,9 +59,9 @@ table ItemInfo {
     /// Secretly Deleted by Planner
     wtf:uint (deprecated);
     /// Max Count
-    max:uint = 9999;
+    max:int32 = 9999;
     /// Daily Limit
-    daily_limit:uint;
+    daily_limit:int32;
 }
 
 table Item {
@@ -67,3 +69,8 @@ table Item {
 }
 
 root_type Item;
+```
+
+:::info
+`number` type will be automatically inferred to the scalar type that matches the value, prioritizing signed types, then unsigned types.
+:::

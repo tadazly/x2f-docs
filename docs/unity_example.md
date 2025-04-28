@@ -1,10 +1,10 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 ---
 
-# Unity 热更新示例
+# Unity 示例
 
-下面展示 YooAsset + HybridCLR 热更新配表方案。最后附带如何[自定义加载逻辑](#自定义加载逻辑)的说明。
+下面展示 **YooAsset + HybridCLR 热更新配表** 方案。最后附带如何[自定义加载逻辑](#自定义加载逻辑)的说明。
 
 ### Unity 项目依赖
 
@@ -87,7 +87,7 @@ AssetBundle Collector:
 - 开启 `Enable Addressable`
 - 使用 `AddressByFileName` 寻址模式
 
-### 示例代码
+### 代码使用示例
 
 ```csharp
 async void Start()
