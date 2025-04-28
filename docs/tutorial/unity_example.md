@@ -2,7 +2,9 @@
 sidebar_position: 6
 ---
 
-# Unity 示例
+# Unity 热更新示例
+
+下面展示 YooAsset + HybridCLR 热更新配表方案。最后附带如何[自定义加载逻辑](#自定义加载逻辑)的说明。
 
 ### Unity 项目依赖
 
@@ -140,11 +142,69 @@ async void Start()
 
 - 可以为 `FlatBuffers` 和 `Xls` 创建 asmdef 文件，并在你的项目中添加 `FlatBuffers` 和 `Xls` 的引用。
 
-### 自定义 Unity 模板代码
-
-- 参考修改 `template/unity` 下的 .cs 文件。
-
 ### 热更新建议
 
 - 打包时，使用 `LZ4` 压缩，可以显著减少二进制大小。
-- 不要将 `FlatBuffers.dll` 加入热更新，否则性能会下降。
+- 只热更新 x2f 生成的代码 `Xls.dll`, 不要将 `FlatBuffers.dll` 加入热更新，否则性能会下降。
+
+### 自定义加载逻辑
+
+如果要自行控制表数据的加载方式，可以修改 `template/unity` 下的这两个代码模板。
+
+- 引入依赖
+
+    ```csharp
+    // 👇 去除或替换成你的依赖
+    using YooAsset;
+    ```
+
+- TableLoaderBase 模板
+
+    ```csharp title="template/unity/unityTableLoaderBaseTemplate.cs"
+    private async UniTask<bool> InternalLoadAsync()
+    {
+        // 修改该方法中获取二进制的代码
+        var package = YooAssets.TryGetPackage("TablePackage");
+        // (...)
+        try
+        {
+            // (...) 
+            // 👇 将你获取的二进制赋值给 buffer
+            var buffer = new ByteBuffer(textAsset.bytes);
+        
+            if (!TableValidator.Validate(
+                    () => VerifyIdentifier(buffer),
+                    () => VerifyBuffer(buffer),
+                    AssetPath))
+            {
+                return false;
+            }
+        
+            _root = GetTableRoot(buffer);
+            LoadDataFromTableRoot(_root);
+            return true;
+        }
+        finally
+        {
+            // 释放资源
+            _loadingTask = null;
+        }
+    }
+    ```
+
+- MergeTableLoader 模板
+
+    ```csharp title="template/unity/unityMergeTableTemplate.cs"
+    public static async UniTask<bool> LoadAllAsync()
+    {   
+        // (...)
+        // 修改该方法中获取二进制的代码
+        var package = YooAssets.TryGetPackage("TablePackage");
+        // (...)
+        
+        // 👇 将你获取的二进制赋值给 buffer
+        var buffer = new ByteBuffer(textAsset.bytes);
+
+        // (...)
+    }
+    ```
