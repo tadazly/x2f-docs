@@ -82,7 +82,7 @@ Above, we swapped the default values of tableClassSuffix and csharpUnityLoaderSu
 
 AssetBundle Collector:
 
-<img src={require("./assets/YooAsset_example.png").default}  width="900" />
+<img src={require("./tutorial/assets/YooAsset_example.png").default}  width="900" />
 
 - Enable `Enable Addressable`
 - Use `AddressByFileName` addressing mode

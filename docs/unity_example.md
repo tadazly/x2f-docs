@@ -82,7 +82,7 @@ CMD 不支持换行符，可以写个 bat 脚本，使用 ^ 换行。
 
 AssetBundle Collector:
 
-<img src={require("./assets/YooAsset_example.png").default}  width="900" />
+<img src={require("./tutorial/assets/YooAsset_example.png").default}  width="900" />
 
 - 开启 `Enable Addressable`
 - 使用 `AddressByFileName` 寻址模式
