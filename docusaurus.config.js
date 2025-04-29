@@ -15,7 +15,7 @@ const projectName = "x2f-docs";
 const config = {
   title: 'Excel to FlatBuffers',
   tagline: 'One tool. One command. FlatBuffers from Excel — instantly.',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: `https://${organizationName}.github.io`,
@@ -82,8 +82,8 @@ const config = {
       navbar: {
         title: 'xlsx-fbs',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'X2F Logo',
+          src: 'img/logo.png',
         },
         items: [
           {
