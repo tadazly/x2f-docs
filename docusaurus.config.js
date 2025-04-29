@@ -71,10 +71,16 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {
+          name: 'keywords',
+          content: 'flatbuffers, excel, x2f, xlsx-fbs, unity, game-development, excel to flatbuffers, 打表工具, 游戏配置表, 表格转flatbuffers, unity打表',
+        },
+      ],
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'X2F',
+        title: 'xlsx-fbs',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
