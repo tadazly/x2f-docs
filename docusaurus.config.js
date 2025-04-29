@@ -14,7 +14,7 @@ const projectName = "x2f-docs";
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Excel to FlatBuffers',
-  tagline: 'Easy way to make FlatBuffers from Excel',
+  tagline: 'One tool. One command. FlatBuffers from Excel — instantly.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -130,7 +130,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Tadazly. Built with ❤️.`,
       },
       prism: {
         theme: prismThemes.github,

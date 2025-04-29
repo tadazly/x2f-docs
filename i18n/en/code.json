@@ -309,5 +309,67 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "homepage.title": {
+    "message": "Excel to FlatBuffers"
+  },
+  "homepage.subtitle": {
+    "message": "One tool. One command. FlatBuffers and Code from Excel — instantly."
+  },
+  "homepage.cta": {
+    "message": "Start Now 🚀"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Search results for \"{query}\"",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Search the documentation",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.searchContext.everywhere": {
+    "message": "Everywhere"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "1 document found|{count} documents found",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "No documents were found",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "No results"
+  },
+  "theme.SearchBar.seeAllOutsideContext": {
+    "message": "See all results outside \"{context}\""
+  },
+  "theme.SearchBar.searchInContext": {
+    "message": "See all results within \"{context}\""
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "See all results"
+  },
+  "theme.SearchBar.label": {
+    "message": "Search",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "homepage.feature1.title": {
+    "message": "Easy to Use"
+  },
+  "homepage.feature1.description": {
+    "message": "X2F gets you from spreadsheet to FlatBuffers in minutes. Just install and generate optimized binary data with one command."
+  },
+  "homepage.feature2.title": {
+    "message": "Automate the Structure"
+  },
+  "homepage.feature2.description": {
+    "message": "No need to handwrite schemas — we generate FlatBuffer schemas for you. Structure your data property once in Excel, and X2F handles the rest, from schema to binary."
+  },
+  "homepage.feature3.title": {
+    "message": "Built for All Platforms"
+  },
+  "homepage.feature3.description": {
+    "message": "Whether it's Unity, C++, or web — your FlatBuffers are ready to go. Designed for cross-platform development and performance-critical applications."
   }
 }

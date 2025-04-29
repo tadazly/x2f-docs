@@ -1,41 +1,54 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import Translate from '@docusaurus/Translate';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: <Translate id="homepage.feature1.title">
+      轻松上手
+    </Translate>,
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        <Translate id="homepage.feature1.description">
+          X2F 让你在三分钟上手 FlatBuffers 转换流。
+          只需一条命令，即可生成优化后的二进制数据。
+        </Translate>
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: <Translate id="homepage.feature2.title">
+      结构自动化
+    </Translate>,
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        <Translate id="homepage.feature2.description">
+          无需手动编写结构定义 —— 我们为你自动生成 FlatBuffers Schema。
+          只需在 Excel 中配置好数据属性，其余从 Schema 到二进制，交给 X2F 自动完成。
+        </Translate>
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: <Translate id="homepage.feature3.title">
+      跨平台而生
+    </Translate>,
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        <Translate id="homepage.feature3.description">
+          无论是 Unity、C++ 还是 Web，生成的 FlatBuffers 都可直接使用。
+          专为跨平台开发和性能敏感场景设计。
+        </Translate>
       </>
     ),
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
