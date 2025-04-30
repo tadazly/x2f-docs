@@ -130,7 +130,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Tadazly. Built with ❤️.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Tadazly.`,
       },
       prism: {
         theme: prismThemes.github,

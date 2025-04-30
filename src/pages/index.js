@@ -39,8 +39,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}`}
+      description="Excel to FlatBuffers 一键生成高性能二进制数据和配套代码。 包含 Unity 代码生成，适合中小型游戏开发配置表。 One tool. One command. FlatBuffers and Code from Excel — instantly.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
